@@ -20,7 +20,7 @@
 		}
 	],
 	"firmwareVersion": {
-		"min": "2.0",
+		"min": "0.0",
 		"max": "255.255"
 	},
 	"associations": {
@@ -502,6 +502,7 @@
 			"allowManualEntry": false,
 			"options": [
 				{
+					"$if": "firmwareVersion >= 2.0",
 					"label": "Unidentified mode",
 					"value": 0
 				},
@@ -534,6 +535,7 @@
 			"allowManualEntry": false,
 			"options": [
 				{
+					"$if": "firmwareVersion >= 2.0",
 					"label": "Unidentified mode",
 					"value": 0
 				},
@@ -555,31 +557,59 @@
 				}
 			]
 		},
-		"122": {
-			"label": "Set the control destination for external switch 1",
-			"valueSize": 1,
-			"minValue": 0,
-			"maxValue": 3,
-			"defaultValue": 3,
-			"readOnly": false,
-			"writeOnly": false,
-			"allowManualEntry": false,
-			"options": [
-				{
-					"label": "control the output loads of itself.",
-					"value": 1
-				},
-				{
-					"label": "control the other nodes",
-					"value": 2
-				},
-				{
-					"label": "control the output loads of itself and other nodes",
-					"value": 3
-				}
-			]
-		},
+		"122": [
+			{
+				"$if": "firmwareVersion >= 2.0",
+				"label": "Set the control destination for external switch 1",
+				"valueSize": 1,
+				"minValue": 0,
+				"maxValue": 3,
+				"defaultValue": 3,
+				"readOnly": false,
+				"writeOnly": false,
+				"allowManualEntry": false,
+				"options": [
+					{
+						"label": "control the output loads of itself.",
+						"value": 1
+					},
+					{
+						"label": "control the other nodes",
+						"value": 2
+					},
+					{
+						"label": "control the output loads of itself and other nodes",
+						"value": 3
+					}
+				]
+			},
+			{
+				"label": "Set the control destination for external switch",
+				"valueSize": 1,
+				"minValue": 0,
+				"maxValue": 3,
+				"defaultValue": 3,
+				"readOnly": false,
+				"writeOnly": false,
+				"allowManualEntry": false,
+				"options": [
+					{
+						"label": "control the output loads of itself.",
+						"value": 1
+					},
+					{
+						"label": "control the other nodes",
+						"value": 2
+					},
+					{
+						"label": "control the output loads of itself and other nodes",
+						"value": 3
+					}
+				]
+			}
+		],
 		"123": {
+			"$if": "firmwareVersion >= 2.0",
 			"label": "Set the control destination for external switch 2",
 			"valueSize": 1,
 			"minValue": 1,
@@ -604,6 +634,7 @@
 			]
 		},
 		"144": {
+			"$if": "firmwareVersion >= 2.0",
 			"label": "Get the connection state of WallSwipe",
 			"valueSize": 1,
 			"minValue": 0,
@@ -624,6 +655,7 @@
 			]
 		},
 		"247": {
+			"$if": "firmwareVersion >= 2.0",
 			"label": "S1/S2 Switch mode",
 			"description": "Set the working way for S1/S2 when the Switch mode is 2 state switch mode",
 			"valueSize": 1,
@@ -696,5 +728,8 @@
 				}
 			]
 		}
+	},
+	"compat": {
+		"preserveRootApplicationCCValueIDs": true
 	}
 }
